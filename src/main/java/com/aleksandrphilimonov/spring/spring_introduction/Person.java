@@ -2,13 +2,18 @@ package com.aleksandrphilimonov.spring.spring_introduction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("person")
 public class Person {
 
     private Pet pet;
+
+    @Value("Tolstoy")
     private String surname;
+
+    @Value("34")
     private int age;
 
     @Autowired
@@ -51,5 +56,13 @@ public class Person {
     public void callYourPet() {
         System.out.println("Hello my pet!");
         pet.say();
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "surname='" + surname + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
