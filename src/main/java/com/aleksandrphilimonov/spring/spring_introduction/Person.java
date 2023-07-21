@@ -10,10 +10,10 @@ public class Person {
 
     private Pet pet;
 
-    @Value("Tolstoy")
+    @Value("${person.surname}")
     private String surname;
 
-    @Value("34")
+    @Value("${person.age}")
     private int age;
 
     @Autowired
