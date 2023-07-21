@@ -9,8 +9,9 @@ public class Person {
     private String surname;
     private int age;
 
-    public void setPet(Pet pet) {
-        System.out.println("Class person: set pet");
+    @Autowired
+    public void anyMethodName(Pet pet) {
+        System.out.println("Class person: anyMethodName");
         this.pet = pet;
     }
 
@@ -32,14 +33,14 @@ public class Person {
         this.age = age;
     }
 
-//    public Person() {
-//        System.out.println("Person bean is created");
-//    }
-    @Autowired
-    public Person(Pet pet) {
+    public Person() {
         System.out.println("Person bean is created");
-        this.pet = pet;
     }
+//    @Autowired
+//    public Person(Pet pet) {
+//        System.out.println("Person bean is created");
+//        this.pet = pet;
+//    }
 
     public void callYourPet() {
         System.out.println("Hello my pet!");
