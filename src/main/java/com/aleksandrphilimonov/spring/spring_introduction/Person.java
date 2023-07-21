@@ -1,5 +1,9 @@
 package com.aleksandrphilimonov.spring.spring_introduction;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("person")
 public class Person {
     private Pet pet;
     private String surname;
@@ -28,10 +32,10 @@ public class Person {
         this.age = age;
     }
 
-    public Person() {
-        System.out.println("Person bean is created");
-    }
-
+//    public Person() {
+//        System.out.println("Person bean is created");
+//    }
+    @Autowired
     public Person(Pet pet) {
         System.out.println("Person bean is created");
         this.pet = pet;
@@ -40,13 +44,5 @@ public class Person {
     public void callYourPet() {
         System.out.println("Hello my pet!");
         pet.say();
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "surname='" + surname + '\'' +
-                ", age=" + age +
-                '}';
     }
 }
