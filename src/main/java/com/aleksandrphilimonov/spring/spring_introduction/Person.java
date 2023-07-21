@@ -5,13 +5,15 @@ import org.springframework.stereotype.Component;
 
 @Component("person")
 public class Person {
+
+    @Autowired
     private Pet pet;
+
     private String surname;
     private int age;
 
-    @Autowired
-    public void anyMethodName(Pet pet) {
-        System.out.println("Class person: anyMethodName");
+    public void setPet(Pet pet) {
+        System.out.println("Class person: setPet");
         this.pet = pet;
     }
 
