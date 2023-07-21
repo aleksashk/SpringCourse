@@ -12,7 +12,10 @@ public class Person {
     private int age;
 
     @Autowired
-    @Qualifier("catBean")
+    public Person(@Qualifier("catBean") Pet pet) {
+        this.pet = pet;
+    }
+
     public void setPet(Pet pet) {
         System.out.println("Class person: setPet");
         this.pet = pet;
