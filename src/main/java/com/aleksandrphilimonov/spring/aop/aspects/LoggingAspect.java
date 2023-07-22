@@ -9,7 +9,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class LoggingAspect {
 
-    @Before("execution(public void *(..))")
+    @Before("execution(public void getBook(com.aleksandrphilimonov.spring.aop.Book))")
     public void beforeGetBookAdvice(){
         System.out.println("beforeGetBookAdvice: попытка получить книгу");
     }
