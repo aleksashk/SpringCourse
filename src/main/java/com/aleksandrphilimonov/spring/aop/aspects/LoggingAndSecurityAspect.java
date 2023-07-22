@@ -9,17 +9,28 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class LoggingAndSecurityAspect {
 
-    @Pointcut("execution(* get*())")
-    private void allGetMethods(){}
+    @Pointcut("execution(* com.aleksandrphilimonov.spring.aop.UniLibrary.get* ())")
+    private void allGetMethodsFromUniLibrary(){}
 
-    @Before("allGetMethods()")
+    @Pointcut("execution(* com.aleksandrphilimonov.spring.aop.UniLibrary.return* ())")
+    private void allReturnMethodsFromUniLibrary(){}
+
+    @Pointcut("allGetMethodsFromUniLibrary() || allReturnMethodsFromUniLibrary()")
+    private void allGetAndReturnMethodsFromUniLibrary(){}
+
+    @Before("allGetMethodsFromUniLibrary()")
     public void beforeGetLoggingAdvice(){
-        System.out.println("beforeGetBookAdvice: попытка получить книгу/журнал");
+        System.out.println("beforeGetLoggingAdvice: writing Log #1");
     }
 
-    @Before("allGetMethods()")
-    public void beforeGetSecurityAdvice(){
-        System.out.println("beforeGetSecurityAdvice: проверка прав на получение книги/журнала");
+    @Before("allReturnMethodsFromUniLibrary()")
+    public void beforeReturnLoggingAdvice(){
+        System.out.println("beforeReturnLoggingAdvice: writing Log #2");
+    }
+
+    @Before("allGetAndReturnMethodsFromUniLibrary()")
+    public void beforeGetAndReturnLoggingAdvice(){
+        System.out.println("beforeGetAndReturnLoggingAdvice: writing Log #3");
     }
 
 }
