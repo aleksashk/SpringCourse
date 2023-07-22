@@ -1,18 +1,27 @@
 package com.aleksandrphilimonov.spring.aop.aspects;
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.aspectj.lang.annotation.Aspect;
 
 @Component
 @Aspect
 @Order(1)
 public class LoggingAspect {
 
-    @Before("com.aleksandrphilimonov.spring.aop.aspects.MyPointcuts.allGetMethods()")
-    public void beforeGetLoggingAdvice() {
-        System.out.println("beforeGetLoggingAdvice: логирование попытки получить книгу/журнал");
+    @Before("com.aleksandrphilimonov.spring.aop.aspects.MyPointcuts.allAddMethods()")
+    public void beforeAddLoggingAdvice(JoinPoint joinPoint) {
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("methodSignature = " + methodSignature);
+        System.out.println("methodSignature.getMethod() -> " + methodSignature.getMethod());
+        System.out.println("methodSignature.getReturnType() -> " + methodSignature.getReturnType());
+        System.out.println("methodSignature.getName() -> " + methodSignature.getName());
+
+        System.out.println("beforeAddLoggingAdvice: логирование попытки получить книгу/журнал");
+        System.out.println("---------------------------------------");
     }
 
 //    @Pointcut("execution(* com.aleksandrphilimonov.spring.aop.UniLibrary.*(..))")
