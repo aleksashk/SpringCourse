@@ -34,8 +34,9 @@ public class UniversityLoggingAspect {
 //        System.out.println("afterGetStudentsLoggingAdvice: логируем получение списка студентов после работы метода getStudents");
 //    }
 
-    @AfterThrowing ("execution(* getStudents())")
-    public void afterThrowingGetStudentsLoggingAdvice(){
-        System.out.println("afterThrowingGetStudentsLoggingAdvice: логируем выброс исключения");
+    @AfterThrowing (pointcut = "execution(* getStudents())",
+    throwing = "exception")
+    public void afterThrowingGetStudentsLoggingAdvice(Throwable exception){
+        System.out.println("afterThrowingGetStudentsLoggingAdvice: логируем выброс исключения " + exception);
     }
 }
