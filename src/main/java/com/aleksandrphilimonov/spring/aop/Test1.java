@@ -8,6 +8,7 @@ public class Test1 {
 
         UniLibrary uniLibrary = context.getBean("uniLibrary", UniLibrary.class);
         uniLibrary.getBook("Преступление и наказание");
+        uniLibrary.getMagazine(54);
 
         context.close();
     }
