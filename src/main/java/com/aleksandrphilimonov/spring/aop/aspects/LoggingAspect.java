@@ -9,15 +9,15 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class LoggingAspect {
 
-    @Before("execution(public void get*())")
+    @Before("execution(public void getBook(String))")
     public void beforeGetBookAdvice(){
         System.out.println("beforeGetBookAdvice: попытка получить книгу");
     }
 
-    @Before("execution(* returnBook())")
-    public void beforeReturnBookAdvice(){
-        System.out.println("beforeReturnBookAdvice: попытка вернуть книгу");
-    }
+//    @Before("execution(* returnBook())")
+//    public void beforeReturnBookAdvice(){
+//        System.out.println("beforeReturnBookAdvice: попытка вернуть книгу");
+//    }
 
 
 }
