@@ -13,7 +13,12 @@ public class NewLoggingAspect {
     public Object aroundReturnBookLoggingAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         System.out.println("aroundReturnBookLoggingAdvice: в библиотеку пытаются вернуть книгу");
 
-        Object targetMethodResult = proceedingJoinPoint.proceed();
+        Object targetMethodResult = null;
+        try {
+            targetMethodResult = proceedingJoinPoint.proceed();
+        } catch (Throwable e) {
+            System.out.println("aroundReturnBookLoggingAdvice: было поймано исключение " + e);
+        }
 
         System.out.println("aroundReturnBookLoggingAdvice: в библиотеку возвращают книгу");
 
