@@ -13,9 +13,10 @@ public class Test6 {
 //        System.out.println(cat1);
 //        System.out.println(cat2);
 //        System.out.println(cat1.equals(cat2));
-        Dog dog = context.getBean("dog", Dog.class);
+//        Pet pet = context.getBean("catBean", Cat.class);
         Person person = context.getBean("personBean", Person.class);
-        person.callYourPet();
+        System.out.println(person);
+//        person.callYourPet();
         context.close();
     }
 }
