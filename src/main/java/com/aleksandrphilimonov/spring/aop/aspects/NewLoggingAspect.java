@@ -16,6 +16,7 @@ public class NewLoggingAspect {
         long begin = System.currentTimeMillis();
 
         Object targetMethodResult = proceedingJoinPoint.proceed();
+        targetMethodResult = "Преступление и наказание";
 
         long end = System.currentTimeMillis();
 
